@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna Brown Consulting - Strategic Partnership Development</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #3498db;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            margin-top: 70px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            background: #ddd;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        /* Services Section */
+        .services {
+            background: #f8f9fa;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        /* Industries Section */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .industry-card {
+            text-align: center;
+            padding: 2rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: border-color 0.3s;
+        }
+        
+        .industry-card:hover {
+            border-color: #667eea;
+        }
+        
+        .industry-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: #2c3e50;
+            color: white;
+        }
+        
+        .contact h2 {
+            color: white;
+        }
+        
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            margin-top: 2rem;
+        }
+        
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .profile-image {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Anna Brown Consulting</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Unlock Growth Through Strategic Partnerships</h1>
+            <p>Channel development and go-to-market expertise for technology, healthcare, and retail brands</p>
+            <a href="#contact" class="cta-button">Schedule Your Growth Strategy Call</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>Cross-Industry Partnership Expert</h2>
+            <div class="about-content">
+                <div class="profile-image">
+                    [Professional Photo]
+                </div>
+                <div>
+                    <p>Anna Brown helps ambitious companies grow through strategic partnerships. With 18+ years of experience spanning technology giants, healthcare innovators, and emerging retail brands, she brings a unique cross-industry perspective to channel development.</p>
+                    <br>
+                    <p>After building partner programmes for technology leaders like PagerDuty, Genesys, and WSO2, Anna discovered that successful partnerships share common DNA across industries. This insight drives her approach: applying winning strategies from other sectors to accelerate your growth.</p>
+                    <br>
+                    <p><strong>Track Record:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>$500M+ in partner-generated revenue</li>
+                        <li>200+ successful partnerships launched</li>
+                        <li>Partner programmes scaled from $0 to $50M+</li>
+                        <li>Experience across 3 major industries</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Channel Strategy Development</h3>
+                    <p>Design partnership ecosystems that multiply your reach. From partner selection to economic modeling, build channels that drive predictable growth.</p>
+                    <p><strong>$25,000 - $75,000</strong></p>
+                </div>
+                <div class="service-card">
+                    <h3>Partner Programme Build</h3>
+                    <p>Create structured programmes that attract and enable the right partners. Includes training, certification, and performance frameworks.</p>
+                    <p><strong>$20,000 - $60,000</strong></p>
+                </div>
+                <div class="service-card">
+                    <h3>Go-to-Market Acceleration</h3>
+                    <p>Launch products and enter new markets through strategic partnerships. From planning to execution, accelerate time-to-revenue.</p>
+                    <p><strong>$30,000 - $80,000</strong></p>
+                </div>
+                <div class="service-card">
+                    <h3>Business Development as a Service</h3>
+                    <p>End-to-end partner recruitment, negotiation, and management. Turn partnerships into your competitive advantage.</p>
+                    <p><strong>$40,000 - $100,000</strong></p>
+                </div>
+                <div class="service-card">
+                    <h3>Fractional Channel Leadership</h3>
+                    <p>Get executive-level channel expertise without the full-time cost. Strategic planning, team development, and board reporting.</p>
+                    <p><strong>$10,000 - $20,000/month</strong></p>
+                </div>
+                <div class="service-card">
+                    <h3>Project Consulting</h3>
+                    <p>Targeted support for specific challenges. Channel audits, workshop facilitation, and problem-solving expertise.</p>
+                    <p><strong>$2,000 - $4,000/day</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industries">
+        <div class="container">
+            <h2>Industry Expertise</h2>
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">💻</div>
+                    <h3>Technology</h3>
+                    <p>From SaaS platforms to enterprise software, build channels that drive predictable revenue growth through VARs, MSPs, and marketplaces.</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🏥</div>
+                    <h3>Healthcare</h3>
+                    <p>Navigate complex healthcare ecosystems with partnerships that improve patient access while maintaining compliance.</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">👗</div>
+                    <h3>Fashion & Retail</h3>
+                    <p>Transform independent designs into thriving brands through strategic wholesale, boutique, and department store partnerships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Start Your Partnership Journey</h2>
+            <div class="contact-content">
+                <p>Ready to unlock growth through strategic partnerships? Let's explore how cross-industry expertise can transform your business.</p>
+                <br>
+                <a href="mailto:anna@annabrownpartners.com" class="cta-button">Schedule a Strategy Call</a>
+                <div class="contact-info">
+                    <p><strong>Email:</strong> <a href="mailto:anna@annabrownpartners.com">anna@annabrownpartners.com</a></p>
+                    <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/annacbrown" target="_blank">linkedin.com/in/annacbrown</a></p>
+                    <p><strong>Location:</strong> San Francisco Bay Area (serving clients globally)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Anna Brown Consulting. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

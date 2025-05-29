@@ -461,18 +461,6 @@
             gap: 2rem;
         }
         
-        .about-stats-image {
-            text-align: center;
-            margin-bottom: 2rem;
-            grid-column: 1 / -1;
-        }
-        
-        .about-stats-image img {
-            width: 100%;
-            max-width: 200px;
-            height: auto;
-        }
-        
         .stat-card {
             background: var(--light-bg);
             padding: 2rem;
@@ -851,7 +839,16 @@
         @media (max-width: 1200px) {
             .services-astronaut,
             .industries-astronaut {
-                display: none;
+                position: static;
+                width: 150px;
+                margin: 2rem auto 0;
+                display: block;
+                transform: none;
+            }
+            
+            .services-header-wrapper,
+            .industries-header-wrapper {
+                position: static;
             }
         }
         
@@ -884,6 +881,13 @@
         }
         
         @media (max-width: 768px) {
+            /* Adjust astronaut images for mobile */
+            .services-astronaut,
+            .industries-astronaut {
+                width: 120px;
+                margin: 1.5rem auto 0;
+            }
+            
             /* Mobile header spacing */
             .header-content {
                 padding: 1rem;
@@ -1207,8 +1211,8 @@
                 </div>
                 <div class="about-grid">
                     <div class="about-stats">
-                        <div class="about-stats-image">
-                            <img src="images/Rocket.png" alt="Future Anna Rocket">
+                        <div class="stat-card" style="display: flex; align-items: center; justify-content: center; padding: 1rem;">
+                            <img src="images/Rocket.png" alt="Future Anna Rocket" style="width: 120px; height: auto;">
                         </div>
                         <div class="stat-card">
                             <div class="stat-number">200+</div>

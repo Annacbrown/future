@@ -971,15 +971,17 @@
     </section>
 
 <!-- Industries Section -->
-<section id="industries" class="industries">
+<section id="industries" class="industries" style="position: relative; overflow: hidden;">
     <div class="industries-content">
-        <div class="section-header" style="position: relative;">
-            <img src="images/Shooting.png" alt="Impact!" style="position: absolute; left: -40px; top: -30px; width: 200px; height: auto; transform: rotate(15deg);">
+        <!-- Watermark astronaut -->
+        <img src="images/Shooting.png" alt="" style="position: absolute; right: 5%; bottom: 10%; width: 400px; height: auto; opacity: 0.06; z-index: 0; transform: rotate(-15deg); pointer-events: none;">
+        
+        <div class="section-header" style="position: relative; z-index: 1;">
             <p class="section-label">Industries</p>
             <h2 class="section-title">Where I Create Impact</h2>
             <p class="section-subtitle">Deep expertise across three dynamic sectors</p>
         </div>
-        <div class="industries-grid">
+        <div class="industries-grid" style="position: relative; z-index: 1;">
             <div class="industry-card">
                 <div class="industry-icon">💻</div>
                 <h3>Technology</h3>

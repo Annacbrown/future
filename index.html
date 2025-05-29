@@ -147,6 +147,10 @@
             flex-direction: column;
             gap: 4px;
             cursor: pointer;
+            padding: 10px;
+            margin: -10px;
+            position: relative;
+            z-index: 1002;
         }
         
         .menu-toggle span {
@@ -154,6 +158,38 @@
             height: 2px;
             background: var(--text);
             transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        /* Mobile Menu Overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
         }
         
         /* Hero Section */
@@ -212,6 +248,7 @@
             align-items: center;
             gap: 0.5rem;
             transition: all 0.3s ease;
+            min-height: 48px;
         }
         
         .btn-primary:hover {
@@ -228,6 +265,9 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
         }
         
         .btn-secondary:hover {
@@ -272,6 +312,12 @@
         .astronaut-figure {
             animation: float 4s ease-in-out infinite;
             filter: drop-shadow(0 10px 20px rgba(0, 95, 115, 0.3));
+        }
+        
+        .astronaut-figure img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
         }
         
         .stars {
@@ -321,8 +367,6 @@
             0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
             50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
         }
-        
-        /* Remove floating card styles */
         
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(-5deg); }
@@ -383,10 +427,10 @@
         
         .section-label {
             color: var(--secondary);
-            font-weight: 700;  /* Bolder */
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;  /* More spacing */
-            font-size: 1.125rem;  /* Larger - was 0.875rem */
+            letter-spacing: 1.5px;
+            font-size: 1.125rem;
             margin-bottom: 0.75rem;
         }
         
@@ -415,6 +459,18 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
+        }
+        
+        .about-stats-image {
+            text-align: center;
+            margin-bottom: 2rem;
+            grid-column: 1 / -1;
+        }
+        
+        .about-stats-image img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
         }
         
         .stat-card {
@@ -470,6 +526,9 @@
             font-weight: 500;
             border: 2px solid transparent;
             transition: all 0.3s ease;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
         }
         
         .tag:hover {
@@ -487,6 +546,19 @@
         .services-content {
             max-width: 1200px;
             margin: 0 auto;
+        }
+        
+        .services-header-wrapper {
+            position: relative;
+        }
+        
+        .services-astronaut {
+            position: absolute;
+            right: -50px;
+            top: -20px;
+            width: 220px;
+            height: auto;
+            transform: scaleX(-1) rotate(10deg);
         }
         
         .services-grid {
@@ -514,7 +586,7 @@
         .service-icon {
             width: 60px;
             height: 60px;
-            background: #87CEEB; /* Sky blue */
+            background: #87CEEB;
             color: var(--primary);
             border: 3px solid var(--text);
             box-shadow: 2px 2px 0 var(--secondary);
@@ -554,6 +626,19 @@
         .industries-content {
             max-width: 1200px;
             margin: 0 auto;
+        }
+        
+        .industries-header-wrapper {
+            position: relative;
+        }
+        
+        .industries-astronaut {
+            position: absolute;
+            left: -40px;
+            top: -30px;
+            width: 200px;
+            height: auto;
+            transform: rotate(15deg);
         }
         
         .industries-grid {
@@ -711,8 +796,8 @@
         }
         
         .social-links a {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
@@ -736,13 +821,18 @@
             list-style: none;
         }
         
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
         .footer-links a {
             color: white;
             text-decoration: none;
             opacity: 0.8;
             transition: all 0.3s ease;
             display: inline-block;
-            padding: 0.25rem 0;
+            padding: 0.5rem 0;
+            min-height: 44px;
         }
         
         .footer-links a:hover {
@@ -758,6 +848,13 @@
         }
         
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .services-astronaut,
+            .industries-astronaut {
+                display: none;
+            }
+        }
+        
         @media (max-width: 1024px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -779,9 +876,30 @@
             .industries-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
         }
         
         @media (max-width: 768px) {
+            /* Mobile header spacing */
+            .header-content {
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.25rem;
+            }
+            
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.25rem;
+            }
+            
+            /* Mobile menu */
             .menu-toggle {
                 display: flex;
             }
@@ -791,41 +909,238 @@
                 top: 0;
                 right: -100%;
                 height: 100vh;
-                width: 100%;
+                width: 80%;
+                max-width: 400px;
                 background: white;
                 flex-direction: column;
                 padding: 5rem 2rem;
                 transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+                z-index: 1001;
+                gap: 2rem;
             }
             
             nav ul.active {
                 right: 0;
             }
             
-            .hero h1 {
+            nav a {
+                font-size: 1.125rem;
+                padding: 0.5rem 0;
+                width: 100%;
+            }
+            
+            .nav-cta {
+                width: 100%;
+                text-align: center;
+                margin-top: 1rem;
+            }
+            
+            /* Mobile hero */
+            .hero {
+                min-height: auto;
+                padding: 5rem 1rem 3rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .hero-text p {
+                font-size: 1rem;
+            }
+            
+            .hero-image {
+                height: 350px;
+                margin-bottom: 2rem;
+            }
+            
+            .astronaut-figure img {
+                max-width: 300px;
+            }
+            
+            .stars {
+                width: 200px;
+                top: -50px;
+            }
+            
+            .star {
+                font-size: 1.5rem !important;
+            }
+            
+            /* Mobile buttons */
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+                padding: 1rem 2rem;
+            }
+            
+            /* Mobile sections */
+            section {
+                padding: 3rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            /* Mobile about section */
+            .about::before,
+            .about::after {
+                display: none;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .stat-card {
+                padding: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .about-text h3 {
+                font-size: 1.5rem;
+            }
+            
+            .about-text p {
+                font-size: 0.95rem;
+            }
+            
+            .expertise-tags {
+                justify-content: center;
+            }
+            
+            .tag {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.8rem;
+            }
+            
+            /* Mobile services */
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .service-card {
+                padding: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .service-card h3 {
+                font-size: 1.25rem;
+            }
+            
+            /* Mobile industries */
+            .industry-card {
+                padding: 2rem 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .industry-icon {
                 font-size: 2.5rem;
             }
             
-            .about-grid {
-                grid-template-columns: 1fr;
+            /* Mobile CTA */
+            .cta {
+                padding: 4rem 1rem;
             }
             
-            .services-grid {
-                grid-template-columns: 1fr;
+            .cta h2 {
+                font-size: 2rem;
+                line-height: 1.2;
             }
             
+            .cta p {
+                font-size: 1rem;
+            }
+            
+            /* Mobile footer */
             .footer-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 2rem;
             }
             
             .social-links {
                 justify-content: center;
             }
+            
+            .footer-links {
+                text-align: center;
+            }
+            
+            .footer-links a {
+                padding: 0.75rem 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.75rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .services-grid,
+            .industries-grid {
+                gap: 1rem;
+            }
+            
+            .service-card,
+            .industry-card {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Skip navigation link */
+        .skip-nav {
+            position: absolute;
+            left: -9999px;
+            z-index: 999;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 0 0 5px 0;
+        }
+        
+        .skip-nav:focus {
+            left: 0;
+            top: 0;
         }
     </style>
 </head>
 <body>
+    <a href="#main" class="skip-nav">Skip to main content</a>
+    
     <!-- Header -->
     <header>
         <div class="header-content">
@@ -833,7 +1148,8 @@
                 <div class="logo-icon">🚀</div>
                 <span>Future Anna</span>
             </a>
-            <nav>
+            <nav role="navigation" aria-label="Main navigation">
+                <div class="menu-overlay" id="menuOverlay"></div>
                 <ul id="navMenu">
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
@@ -841,171 +1157,176 @@
                     <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
                 </ul>
             </nav>
-            <div class="menu-toggle" id="menuToggle">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Turn Partnerships Into Your <span>Growth Engine</span></h1>
-                <p>I help ambitious companies build strategic channels that multiply revenue across technology, health & wellness, and retail.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn-primary">Start Your Growth Journey →</a>
-                    <a href="#services" class="btn-secondary">Explore Services</a>
+    <main id="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Turn Partnerships Into Your <span>Growth Engine</span></h1>
+                    <p>I help ambitious companies build strategic channels that multiply revenue across technology, health & wellness, and retail.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">Start Your Growth Journey →</a>
+                        <a href="#services" class="btn-secondary">Explore Services</a>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-image">
-                    <div class="astronaut-container">
-                        <div class="astronaut">
-                            <div class="stars">
-                                <span class="star star-1">✦</span>
-                                <span class="star star-2">✦</span>
-                                <span class="star star-3">✦</span>
-                                <span class="star star-4">✦</span>
-                            </div>
-                            <div class="astronaut-figure">
-                                <img src="images/Primary.png" alt="Future Anna - It's About Time She Showed Up!" style="width: 500px; height: auto;">
+                <div class="hero-visual">
+                    <div class="hero-image">
+                        <div class="astronaut-container">
+                            <div class="astronaut">
+                                <div class="stars">
+                                    <span class="star star-1">✦</span>
+                                    <span class="star star-2">✦</span>
+                                    <span class="star star-3">✦</span>
+                                    <span class="star star-4">✦</span>
+                                </div>
+                                <div class="astronaut-figure">
+                                    <img src="images/Primary.png" alt="Future Anna - It's About Time She Showed Up!">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="about-content">
-            <div class="section-header">
-                <p class="section-label">About</p>
-                <h2 class="section-title">Cross-Industry Partnership Expert</h2>
-                <p class="section-subtitle">Bringing fresh perspectives from multiple sectors to accelerate your growth</p>
-            </div>
-            <div class="about-grid">
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="about-content">
+                <div class="section-header">
+                    <p class="section-label">About</p>
+                    <h2 class="section-title">Cross-Industry Partnership Expert</h2>
+                    <p class="section-subtitle">Bringing fresh perspectives from multiple sectors to accelerate your growth</p>
+                </div>
+                <div class="about-grid">
                     <div class="about-stats">
-                        <div style="text-align: center; margin-bottom: 2rem;">
-                            <img src="images/Rocket.png" alt="Future Anna Rocket" style="width: 200px; height: auto;">
+                        <div class="about-stats-image">
+                            <img src="images/Rocket.png" alt="Future Anna Rocket">
                         </div>
                         <div class="stat-card">
-                        <div class="stat-number">200+</div>
-                        <div class="stat-label">Partnerships Built</div>
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">Partnerships Built</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">18+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">$50M</div>
+                            <div class="stat-label">Largest Program</div>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">18+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">$50M</div>
-                        <div class="stat-label">Largest Program</div>
+                    <div class="about-text">
+                        <h3>Why Cross-Industry Expertise Matters</h3>
+                        <p>After building partner programs for technology leaders like PagerDuty, Genesys, and WSO2, I discovered something powerful: the best partnership strategies often come from outside your industry.</p>
+                        <p>What works in SaaS can transform medical device distribution. What succeeds in fashion can revolutionize software partnerships. This cross-pollination of ideas is what sets my approach apart.</p>
+                        <p>I don't just bring a playbook—I bring a library of proven strategies from multiple sectors, adapted to your unique challenges.</p>
+                        <div class="expertise-tags">
+                            <span class="tag">Channel Strategy</span>
+                            <span class="tag">Partner Enablement</span>
+                            <span class="tag">Go-to-Market</span>
+                            <span class="tag">Business Development</span>
+                            <span class="tag">Revenue Growth</span>
+                            <span class="tag">Strategic Alliances</span>
+                        </div>
                     </div>
                 </div>
-                <div class="about-text">
-                    <h3>Why Cross-Industry Expertise Matters</h3>
-                    <p>After building partner programs for technology leaders like PagerDuty, Genesys, and WSO2, I discovered something powerful: the best partnership strategies often come from outside your industry.</p>
-                    <p>What works in SaaS can transform medical device distribution. What succeeds in fashion can revolutionize software partnerships. This cross-pollination of ideas is what sets my approach apart.</p>
-                    <p>I don't just bring a playbook—I bring a library of proven strategies from multiple sectors, adapted to your unique challenges.</p>
-                    <div class="expertise-tags">
-                        <span class="tag">Channel Strategy</span>
-                        <span class="tag">Partner Enablement</span>
-                        <span class="tag">Go-to-Market</span>
-                        <span class="tag">Business Development</span>
-                        <span class="tag">Revenue Growth</span>
-                        <span class="tag">Strategic Alliances</span>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="services-content">
+                <div class="services-header-wrapper">
+                    <div class="section-header">
+                        <p class="section-label">Services</p>
+                        <h2 class="section-title">How I Help You Grow</h2>
+                        <p class="section-subtitle">Comprehensive partnership solutions tailored to your industry and goals</p>
+                    </div>
+                    <img src="images/GCanyon.png" alt="Ready to Launch!" class="services-astronaut">
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🚀</div>
+                        <h3>Channel Strategy Development</h3>
+                        <p>Design partnership ecosystems that multiply your reach. From partner selection to economic modeling, build channels that drive predictable growth.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🛸</div>
+                        <h3>Partner Program Build</h3>
+                        <p>Create structured programs that attract and enable the right partners. Includes training, certification, and performance frameworks.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💫</div>
+                        <h3>Go-to-Market Acceleration</h3>
+                        <p>Launch products and enter new markets through strategic partnerships. From planning to execution, accelerate time-to-revenue.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🌟</div>
+                        <h3>Business Development as a Service</h3>
+                        <p>End-to-end partner recruitment, negotiation, and management. Turn partnerships into your competitive advantage.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🛰️</div>
+                        <h3>Fractional Channel Leadership</h3>
+                        <p>Get executive-level channel expertise without the full-time cost. Strategic planning, team development, and board reporting.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">✨</div>
+                        <h3>Project Consulting</h3>
+                        <p>Targeted support for specific challenges. Channel audits, workshop facilitation, and problem-solving expertise.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-<!-- Services Section -->
-<section id="services" class="services">
-    <div class="services-content">
-        <div class="section-header" style="position: relative;">
-            <p class="section-label">Services</p>
-            <h2 class="section-title">How I Help You Grow</h2>
-            <p class="section-subtitle">Comprehensive partnership solutions tailored to your industry and goals</p>
-            <!-- Float the astronaut to the right of the header -->
-            <img src="images/GCanyon.png" alt="Ready to Launch!" style="position: absolute; right: -50px; top: -20px; width: 220px; height: auto; transform: scaleX(-1) rotate(10deg);">
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🚀</div>
-                <h3>Channel Strategy Development</h3>
-                <p>Design partnership ecosystems that multiply your reach. From partner selection to economic modeling, build channels that drive predictable growth.</p>
+        <!-- Industries Section -->
+        <section id="industries" class="industries">
+            <div class="industries-content">
+                <div class="industries-header-wrapper">
+                    <img src="images/Shooting.png" alt="Impact!" class="industries-astronaut">
+                    <div class="section-header">
+                        <p class="section-label">Industries</p>
+                        <h2 class="section-title">Where I Create Impact</h2>
+                        <p class="section-subtitle">Deep expertise across three dynamic sectors</p>
+                    </div>
+                </div>
+                <div class="industries-grid">
+                    <div class="industry-card">
+                        <div class="industry-icon">🚀</div>
+                        <h3>Technology</h3>
+                        <p>From SaaS platforms to enterprise software, build channels that drive predictable revenue growth through VARs, MSPs, and marketplaces.</p>
+                    </div>
+                    <div class="industry-card">
+                        <div class="industry-icon">🌙</div>
+                        <h3>Health & Wellness</h3>
+                        <p>Build distribution channels for vitamins, supplements, and wellness products through retailers, health stores, and direct-to-consumer partnerships.</p>
+                    </div>
+                    <div class="industry-card">
+                        <div class="industry-icon">⭐</div>
+                        <h3>Fashion & Retail</h3>
+                        <p>Transform independent designs into thriving brands through strategic wholesale, boutique, and department store partnerships.</p>
+                    </div>
+                </div>
             </div>
-            <div class="service-card">
-                <div class="service-icon">🛸</div>
-                <h3>Partner Program Build</h3>
-                <p>Create structured programs that attract and enable the right partners. Includes training, certification, and performance frameworks.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">💫</div>
-                <h3>Go-to-Market Acceleration</h3>
-                <p>Launch products and enter new markets through strategic partnerships. From planning to execution, accelerate time-to-revenue.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🌟</div>
-                <h3>Business Development as a Service</h3>
-                <p>End-to-end partner recruitment, negotiation, and management. Turn partnerships into your competitive advantage.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🛰️</div>
-                <h3>Fractional Channel Leadership</h3>
-                <p>Get executive-level channel expertise without the full-time cost. Strategic planning, team development, and board reporting.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">✨</div>
-                <h3>Project Consulting</h3>
-                <p>Targeted support for specific challenges. Channel audits, workshop facilitation, and problem-solving expertise.</p>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- Industries Section -->
-<section id="industries" class="industries">
-    <div class="industries-content">
-        <div class="section-header" style="position: relative;">
-            <img src="images/Shooting.png" alt="Impact!" style="position: absolute; left: -40px; top: -30px; width: 200px; height: auto; transform: rotate(15deg);">
-            <p class="section-label">Industries</p>
-            <h2 class="section-title">Where I Create Impact</h2>
-            <p class="section-subtitle">Deep expertise across three dynamic sectors</p>
-        </div>
-        <div class="industries-grid">
-            <div class="industry-card">
-                <div class="industry-icon">🚀</div>
-                <h3>Technology</h3>
-                <p>From SaaS platforms to enterprise software, build channels that drive predictable revenue growth through VARs, MSPs, and marketplaces.</p>
+        <!-- CTA Section -->
+        <section id="contact" class="cta">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Growth?</h2>
+                <p>Let's explore how strategic partnerships can accelerate your business.</p>
+                <a href="mailto:anna@futureanna.com" class="btn-primary">Schedule Your Strategy Call</a>
             </div>
-            <div class="industry-card">
-                <div class="industry-icon">🌙</div>
-                <h3>Health & Wellness</h3>
-                <p>Build distribution channels for vitamins, supplements, and wellness products through retailers, health stores, and direct-to-consumer partnerships.</p>
-            </div>
-            <div class="industry-card">
-                <div class="industry-icon">⭐</div>
-                <h3>Fashion & Retail</h3>
-                <p>Transform independent designs into thriving brands through strategic wholesale, boutique, and department store partnerships.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- CTA Section -->
-    <section id="contact" class="cta">
-        <div class="cta-content">
-            <h2>Ready to Transform Your Growth?</h2>
-            <p>Let's explore how strategic partnerships can accelerate your business.</p>
-            <a href="mailto:anna@futureanna.com" class="btn-primary">Schedule Your Strategy Call</a>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -1014,8 +1335,8 @@
                 <h3>Future Anna</h3>
                 <p>Strategic partnership expert helping companies across technology, health & wellness, and retail build channels that multiply revenue.</p>
                 <div class="social-links">
-                    <a href="https://linkedin.com/in/annacbrown" target="_blank">in</a>
-                    <a href="mailto:anna@futureanna.com">@</a>
+                    <a href="https://linkedin.com/in/annacbrown" target="_blank" aria-label="LinkedIn">in</a>
+                    <a href="mailto:anna@futureanna.com" aria-label="Email">@</a>
                 </div>
             </div>
             <div class="footer-links">
@@ -1045,18 +1366,46 @@
         // Mobile Menu Toggle
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const body = document.body;
         
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
+        function toggleMenu() {
+            const isOpen = navMenu.classList.contains('active');
+            
+            if (isOpen) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                body.style.overflow = '';
+                menuToggle.setAttribute('aria-expanded', 'false');
+            } else {
+                navMenu.classList.add('active');
+                menuToggle.classList.add('active');
+                menuOverlay.classList.add('active');
+                body.style.overflow = 'hidden';
+                menuToggle.setAttribute('aria-expanded', 'true');
+            }
+        }
+        
+        menuToggle.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
         
         // Close menu when clicking a link
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
                 menuToggle.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                body.style.overflow = '';
+                menuToggle.setAttribute('aria-expanded', 'false');
             });
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                toggleMenu();
+            }
         });
         
         // Header scroll effect
@@ -1080,9 +1429,13 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
@@ -1091,7 +1444,7 @@
         // Intersection Observer for fade-in animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
         
         const observer = new IntersectionObserver((entries) => {
@@ -1099,16 +1452,42 @@
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
         
-        // Apply observer to elements
-        document.querySelectorAll('.service-card, .industry-card, .stat-card').forEach(el => {
+        // Apply observer to elements with delay
+        const animateElements = document.querySelectorAll('.service-card, .industry-card, .stat-card');
+        animateElements.forEach((el, index) => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'all 0.6s ease';
+            el.style.transitionDelay = `${index * 0.1}s`;
             observer.observe(el);
+        });
+        
+        // Lazy load images
+        const images = document.querySelectorAll('img');
+        const imageOptions = {
+            threshold: 0,
+            rootMargin: '0px 0px 50px 0px'
+        };
+        
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.style.opacity = '1';
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, imageOptions);
+        
+        images.forEach(img => {
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.5s ease';
+            imageObserver.observe(img);
         });
     </script>
 </body>

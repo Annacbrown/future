@@ -141,32 +141,6 @@
             display: none;
         }
 
-        /* Industries Watermark Styles */
-        .industries {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .industries::after {
-            content: '';
-            position: absolute;
-            right: 5%;
-            bottom: 10%;
-            width: 400px;
-            height: 400px;
-            background: url('images/Shooting.png') no-repeat center;
-            background-size: contain;
-            opacity: 0.15;
-            transform: rotate(-15deg);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .industries-content {
-            position: relative;
-            z-index: 1;
-        }
-        
         /* Mobile Menu */
         .menu-toggle {
             display: none;
@@ -997,31 +971,35 @@
     </section>
 
 <!-- Industries Section -->
-<section id="industries" class="industries" style="position: relative; overflow: hidden;">
+<section id="industries" class="industries">
     <div class="industries-content">
-        <!-- Watermark astronaut -->
-        <img src="images/Shooting.png" alt="" style="position: absolute; right: 5%; bottom: 10%; width: 400px; height: auto; opacity: 0.06; z-index: 0; transform: rotate(-15deg); pointer-events: none;">
-        
-        <div class="section-header" style="position: relative; z-index: 1;">
+        <div class="section-header">
             <p class="section-label">Industries</p>
             <h2 class="section-title">Where I Create Impact</h2>
             <p class="section-subtitle">Deep expertise across three dynamic sectors</p>
         </div>
-        <div class="industries-grid" style="position: relative; z-index: 1;">
+        <div class="industries-grid" style="grid-template-columns: repeat(4, 1fr);">
+            <div class="industry-card" style="background: var(--light-bg); border-color: var(--secondary); box-shadow: 5px 5px 0 var(--secondary);">
+                <div class="industry-icon">
+                    <img src="images/Shooting.png" alt="Strategic Impact" style="width: 80px; height: auto;">
+                </div>
+                <h3>Strategic Impact</h3>
+                <p>Targeting the right partnerships with precision to multiply your growth potential.</p>
+            </div>
             <div class="industry-card">
                 <div class="industry-icon">💻</div>
                 <h3>Technology</h3>
-                <p>From SaaS platforms to enterprise software, build channels that drive predictable revenue growth through VARs, MSPs, and marketplaces.</p>
+                <p>From SaaS platforms to enterprise software, build channels that drive predictable revenue growth.</p>
             </div>
             <div class="industry-card">
                 <div class="industry-icon">🌱</div>
                 <h3>Health & Wellness</h3>
-                <p>Build distribution channels for vitamins, supplements, and wellness products through retailers, health stores, and direct-to-consumer partnerships.</p>
+                <p>Build distribution channels for vitamins, supplements, and wellness products.</p>
             </div>
             <div class="industry-card">
                 <div class="industry-icon">👗</div>
                 <h3>Fashion & Retail</h3>
-                <p>Transform independent designs into thriving brands through strategic wholesale, boutique, and department store partnerships.</p>
+                <p>Transform independent designs into thriving brands through strategic partnerships.</p>
             </div>
         </div>
     </div>

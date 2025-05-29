@@ -16,11 +16,11 @@
         }
         
         :root {
-            --primary: #5B21B6;
-            --secondary: #F59E0B;
-            --accent: #10B981;
-            --text: #1F2937;
-            --light-bg: #F9FAFB;
+            --primary: #005f73;  /* Teal from logo */
+            --secondary: #ee6c4d; /* Orange from logo */
+            --accent: #3a86ff;   /* Bright blue */
+            --text: #2d4a44;     /* Dark green */
+            --light-bg: #faf7f0;  /* Warm cream */
             --white: #FFFFFF;
             --gray: #6B7280;
         }
@@ -58,6 +58,9 @@
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
@@ -65,8 +68,25 @@
             transition: transform 0.3s ease;
         }
         
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            animation: float 3s ease-in-out infinite;
+        }
+        
         .logo:hover {
             transform: scale(1.05);
+        }
+        
+        .logo:hover .logo-icon {
+            animation-play-state: paused;
         }
         
         nav ul {
@@ -223,60 +243,132 @@
         .hero-image {
             width: 100%;
             height: 500px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, #faf7f0 0%, #e8dfd2 100%);
+            border: 3px solid var(--text);
             border-radius: 20px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(91, 33, 182, 0.2);
+            box-shadow: 8px 8px 0 var(--text);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: white;
         }
         
-        .floating-card {
+        .rocket-bg {
             position: absolute;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            animation: float 3s ease-in-out infinite;
+            font-size: 15rem;
+            opacity: 0.1;
+            transform: rotate(-30deg);
+            top: -50px;
+            right: -50px;
         }
         
-        .floating-card.card-1 {
-            top: -20px;
-            right: -20px;
+        .astronaut-container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .astronaut-figure {
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 10px 20px rgba(0, 95, 115, 0.3));
+        }
+        
+        .stars {
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 150px;
+        }
+        
+        .star {
+            position: absolute;
+            color: var(--secondary);
+            animation: twinkle 2s ease-in-out infinite;
+        }
+        
+        .star-1 {
+            top: 0;
+            left: 10%;
             animation-delay: 0s;
+            font-size: 2rem;
         }
         
-        .floating-card.card-2 {
-            bottom: 20px;
-            left: -40px;
-            animation-delay: 1s;
-        }
-        
-        .floating-card h4 {
-            font-size: 0.875rem;
-            color: var(--gray);
-            margin-bottom: 0.25rem;
-        }
-        
-        .floating-card p {
+        .star-2 {
+            top: 40px;
+            right: 20%;
+            animation-delay: 0.5s;
             font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
         }
+        
+        .star-3 {
+            top: 20px;
+            left: 40%;
+            animation-delay: 1s;
+            font-size: 1.2rem;
+        }
+        
+        .star-4 {
+            top: 60px;
+            left: 70%;
+            animation-delay: 1.5s;
+            font-size: 1.8rem;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+        }
+        
+        /* Remove floating card styles */
         
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        /* Retro Badge Styles */
+        .retro-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border: 2px solid var(--text);
+            box-shadow: 3px 3px 0 var(--text);
+            margin-bottom: 1rem;
         }
         
         /* About Section */
         .about {
             padding: 6rem 2rem;
             background: white;
+            position: relative;
+        }
+        
+        .about::before {
+            content: '✦';
+            position: absolute;
+            top: 2rem;
+            left: 5%;
+            font-size: 3rem;
+            color: var(--secondary);
+            opacity: 0.3;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+        
+        .about::after {
+            content: '🚀';
+            position: absolute;
+            bottom: 2rem;
+            right: 5%;
+            font-size: 4rem;
+            opacity: 0.1;
+            transform: rotate(45deg);
         }
         
         .about-content {
@@ -410,13 +502,13 @@
             border-radius: 20px;
             position: relative;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border: 3px solid var(--text);
+            box-shadow: 5px 5px 0 var(--text);
         }
         
         .service-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translate(-5px, -5px);
+            box-shadow: 10px 10px 0 var(--text);
         }
         
         .service-icon {
@@ -474,33 +566,33 @@
             border-radius: 20px;
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
+            background: white;
+            border: 3px solid var(--text);
         }
         
-        .industry-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
+        .industry-card:nth-child(1) { 
+            box-shadow: 5px 5px 0 var(--primary);
         }
-        
-        .industry-card:hover::before {
-            opacity: 0.1;
+        .industry-card:nth-child(2) { 
+            box-shadow: 5px 5px 0 var(--secondary);
+        }
+        .industry-card:nth-child(3) { 
+            box-shadow: 5px 5px 0 var(--accent);
         }
         
         .industry-card:hover {
-            transform: translateY(-10px);
+            transform: translate(-3px, -3px);
         }
         
-        .industry-card:nth-child(1) { border: 2px solid var(--primary); }
-        .industry-card:nth-child(2) { border: 2px solid var(--secondary); }
-        .industry-card:nth-child(3) { border: 2px solid var(--accent); }
+        .industry-card:nth-child(1):hover {
+            box-shadow: 8px 8px 0 var(--primary);
+        }
+        .industry-card:nth-child(2):hover {
+            box-shadow: 8px 8px 0 var(--secondary);
+        }
+        .industry-card:nth-child(3):hover {
+            box-shadow: 8px 8px 0 var(--accent);
+        }
         
         .industry-icon {
             font-size: 3rem;
@@ -528,11 +620,37 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.05) 10px,
+                rgba(255, 255, 255, 0.05) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
         }
         
         .cta-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
         .cta h2 {
@@ -708,7 +826,10 @@
     <!-- Header -->
     <header>
         <div class="header-content">
-            <a href="#home" class="logo">Anna Brown</a>
+            <a href="#home" class="logo">
+                <div class="logo-icon">🚀</div>
+                <span>Future Anna</span>
+            </a>
             <nav>
                 <ul id="navMenu">
                     <li><a href="#about">About</a></li>
@@ -738,15 +859,20 @@
             </div>
             <div class="hero-visual">
                 <div class="hero-image">
-                    [Professional Photo]
-                </div>
-                <div class="floating-card card-1">
-                    <h4>Partner Revenue</h4>
-                    <p>$500M+</p>
-                </div>
-                <div class="floating-card card-2">
-                    <h4>Success Rate</h4>
-                    <p>92%</p>
+                    <div class="astronaut-container">
+                        <div class="rocket-bg">🚀</div>
+                        <div class="astronaut">
+                            <div class="stars">
+                                <span class="star star-1">✦</span>
+                                <span class="star star-2">✦</span>
+                                <span class="star star-3">✦</span>
+                                <span class="star star-4">✦</span>
+                            </div>
+                            <div class="astronaut-figure">
+                                <span style="font-size: 8rem;">🧑‍🚀</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -861,9 +987,9 @@
                     <p>From SaaS platforms to enterprise software, build channels that drive predictable revenue growth through VARs, MSPs, and marketplaces.</p>
                 </div>
                 <div class="industry-card">
-                    <div class="industry-icon">🏥</div>
-                    <h3>Healthcare</h3>
-                    <p>Navigate complex healthcare ecosystems with partnerships that improve patient access while maintaining compliance and quality.</p>
+                    <div class="industry-icon">🌱</div>
+                    <h3>Health & Wellness</h3>
+                    <p>Build distribution channels for vitamins, supplements, and wellness products through retailers, health stores, and direct-to-consumer partnerships.</p>
                 </div>
                 <div class="industry-card">
                     <div class="industry-icon">👗</div>
@@ -879,7 +1005,7 @@
         <div class="cta-content">
             <h2>Ready to Transform Your Growth?</h2>
             <p>Let's explore how strategic partnerships can accelerate your business.</p>
-            <a href="mailto:anna@annabrownpartners.com" class="btn-primary">Schedule Your Strategy Call</a>
+            <a href="mailto:anna@futureanna.com" class="btn-primary">Schedule Your Strategy Call</a>
         </div>
     </section>
 
@@ -887,11 +1013,11 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <h3>Anna Brown</h3>
-                <p>Strategic partnership expert helping companies across technology, healthcare, and retail build channels that multiply revenue.</p>
+                <h3>Future Anna</h3>
+                <p>Strategic partnership expert helping companies across technology, health & wellness, and retail build channels that multiply revenue.</p>
                 <div class="social-links">
                     <a href="https://linkedin.com/in/annacbrown" target="_blank">in</a>
-                    <a href="mailto:anna@annabrownpartners.com">@</a>
+                    <a href="mailto:anna@futureanna.com">@</a>
                 </div>
             </div>
             <div class="footer-links">
@@ -906,14 +1032,14 @@
             <div class="footer-links">
                 <h4>Get in Touch</h4>
                 <ul>
-                    <li><a href="mailto:anna@annabrownpartners.com">anna@annabrownpartners.com</a></li>
+                    <li><a href="mailto:anna@futureanna.com">anna@futureanna.com</a></li>
                     <li><a href="https://linkedin.com/in/annacbrown">LinkedIn Profile</a></li>
                     <li><a href="#">San Francisco Bay Area</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Anna Brown Consulting. All rights reserved.</p>
+            <p>&copy; 2024 Future Anna Consulting. All rights reserved.</p>
         </div>
     </footer>
 

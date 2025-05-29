@@ -512,10 +512,19 @@
         }
         
         .service-icon {
-            background: var(--light-bg); /* Cream background */
-            color: var(--primary); /* Teal icons */
+            width: 60px;
+            height: 60px;
+            background: var(--light-bg);
+            color: var(--primary);
             border: 3px solid var(--text);
             box-shadow: 3px 3px 0 var(--secondary);
+            box-sizing: border-box; /* This ensures border is included in the 60px */
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
         }
         
         .service-card h3 {

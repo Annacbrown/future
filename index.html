@@ -469,14 +469,6 @@
             transition: all 0.3s ease;
         }
         
-        .rocket-card {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            min-height: 140px;
-        }
-        
         .stat-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -1219,8 +1211,8 @@
                 </div>
                 <div class="about-grid">
                     <div class="about-stats">
-                        <div class="stat-card rocket-card">
-                            <img src="images/Rocket.png" alt="Future Anna Rocket" style="width: 100%; height: 100%; object-fit: contain; max-width: 150px;">
+                        <div style="display: flex; align-items: center; justify-content: center; grid-column: 1 / -1;">
+                            <img src="images/Rocket.png" alt="Future Anna Rocket" style="width: 180px; height: auto;">
                         </div>
                         <div class="stat-card">
                             <div class="stat-number">200+</div>
